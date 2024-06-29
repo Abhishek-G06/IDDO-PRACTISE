@@ -877,15 +877,13 @@ canvas {
         max-width: 50%;
     }
 
-    .collapse {
-        position: absolute;
-        background: #000;
-        left: 0;
-        right: 0;
-        top: 60px;
-        padding-bottom: 10px;
-        display: none;
-    }
+    .collapse{ position: absolute; 
+        background: #000; 
+        left: 0; 
+        right: 0; 
+        top: 60px; 
+        padding-bottom: 10px; 
+        display: none;}
 
     .menu {
         display: inline-block
