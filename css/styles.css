@@ -70,11 +70,13 @@ html {
     --ff: proxima, sans-serif;
     scroll-behavior: smooth;
     scroll-padding-top: 80px;
+    overflow-x: hidden;
 }
 
 body {
     font: 16px/1.2 var(--ff);
 }
+
 
 .container {
     max-width: 1200px;
@@ -218,38 +220,19 @@ nav a {
     height: 2px;
     background: var(--red);
     margin: 6px 10px;
+    transition: .4s;
+    transform-origin: right center;
 }
 
-/* label[for="mob-btn"] {
+.menu {
     display: none;
     position: absolute;
     right: 1rem;
     top: 20px;
-} */
-
-label[for="mob-btn"] {
-    display: none;
-    width: 90px;
-    height: 35px;
-    border: 2px solid;
-    color: var(--red);
-    background: none;
-    border-radius: 10px;
-    font: 16px var(--ff);
-    float: right;
-    margin-top: 20px;
-    padding: 5px 10px;
 }
 
-[for="mob-btn"] span {
-    display: block;
-    height: 2px;
-    background: var(--red);
-    margin: 4px 0;
-}
-
-header input[type="checkbox"]:checked+.collapse {
-    display: block;
+.signup {
+    color: #e64444;
 }
 
 .banner {
@@ -331,7 +314,7 @@ h2 {
     margin: 0 10px 60px 0;
 }
 
-.btn.active {
+.wrap-5 .btn.active {
     background: var(--red);
     color: #fff;
     border-color: var(--red);
@@ -399,13 +382,13 @@ h2 {
     text-align: center;
 }
 
-.review {
+/* .review {
     display: none;
 }
 
 .review.active {
     display: block;
-}
+} */
 
 .review q {
     font-size: 36px;
@@ -423,7 +406,7 @@ h2 {
     margin: 17px 0 10px;
 }
 
-.pager {
+/* .pager {
     display: flex;
     list-style: none;
     padding: 0;
@@ -446,7 +429,29 @@ h2 {
 
 .pager a.active {
     background: #fff;
+} */
+
+.wrap-6 .bx-wrapper {
+    background: none;
+    border: none;
+    box-shadow: 0 0;
 }
+
+.wrap-6 .bx-wrapper img {
+    display: inline;
+}
+
+.wrap-6 .bx-wrapper .bx-pager.bx-default-pager a {
+    border: 2px solid #fff;
+}
+
+.wrap-6 .bx-wrapper .bx-pager.bx-default-pager a.active,
+.bx-wrapper .bx-pager.bx-default-pager a:focus,
+.bx-wrapper .bx-pager.bx-default-pager a:hover {
+    background: #fff;
+}
+
+
 
 
 
@@ -555,11 +560,11 @@ canvas {
     margin-bottom: 10px;
 }
 
-.accordion li.active a {
+.accordion li a.active {
     color: var(--red);
 }
 
-.accordion li.active p {
+.accordion li:first-child p {
     display: block;
 }
 
@@ -591,7 +596,7 @@ canvas {
     float: right;
 }
 
-.accordion li.active a::after {
+.accordion li a.active::after {
     content: '-';
 }
 
@@ -729,10 +734,40 @@ canvas {
 }
 
 
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: #000a;
+    z-index: 10;
+}
 
+.popup {
+    position: fixed;
+    background: #fff;
+    padding: 1rem;
+    border-radius: 10px;
+    z-index: 11;
+    left: 50%;
+    transform: translate(-50%);
+    top: 100px;
+}
 
+.popup form div {
+    margin: 1rem 0;
+}
 
+.popup form div input {
+    float: right;
+    margin-left: 10px;
+}
 
+.close {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    background: none;
+    border: none;
+}
 
 /* -------- */
 
@@ -845,18 +880,46 @@ canvas {
     }
 
     .collapse {
+        position: absolute;
+        background: #000;
+        left: 0;
+        right: 0;
+        top: 60px;
+        padding-bottom: 10px;
         display: none;
     }
 
-    label[for="mob-btn"] {
-        display: inline-block;
+    .menu {
+        display: inline-block
     }
 
-    [for="mob-btn"]{ display: block;}
-    .collapse{ position: absolute; left: 0; right: 0; top: 80px; background: #000;}
-    .collapse ul, .collapse .flex{ flex-flow: column wrap;} 
-    nav{ width: 100%; text-align: right;}
-    .collapse a{ line-height: 40px;}
+    .menu.active span:nth-child(1) {
+        transform: rotate(-14deg);
+    }
+
+    .menu.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu.active span:nth-child(3) {
+        transform: rotate(14deg);
+    }
+
+    .collapse ul,
+    .collapse .flex {
+        flex-flow: column wrap;
+    }
+
+    nav {
+        width: 100%;
+        text-align: right;
+    }
+
+    header nav a {
+        display: block;
+        line-height: 40px;
+    }
+
 
     /* header input[type="checkbox"]:checked + .collapse {
         display: block;
@@ -900,5 +963,13 @@ canvas {
     .col-t-auto {
         flex-basis: 50%;
         max-width: 100%;
+    }
+
+    .popup form div {
+        white-space: nowrap;
+    }
+
+    .popup form div input {
+        float: none;
     }
 }
