@@ -1,4 +1,3 @@
-// AOS.init();
 new PureCounter({
     selector: ".count",
 });
