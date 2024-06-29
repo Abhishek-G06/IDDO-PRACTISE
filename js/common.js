@@ -97,15 +97,14 @@ $(function () {
         pause: 5000
     });
 
-    $(".countries").chosen()
 
-    $(".menu").click(function () {
+    $(".menu").click(function(){
         $(this).toggleClass("active");
         $(".collapse").slideToggle()
     });
 
-    if (screen.width < 767) {
-        $(".collapse a").click(function () {
+    if( screen.width<767 ){
+        $(".collapse a").click(function(){ 
             $(".collapse").slideUp();
             $(".menu").removeClass("active");
         })
